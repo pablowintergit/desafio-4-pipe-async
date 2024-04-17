@@ -1,1 +1,20 @@
-<p>async-promise-pipe works!</p>
+<table class="promises" width="100%" cellspacing="0">    
+    <thead>
+        <tr>
+            <th>Codigo</th>
+            <th>Nombre</th>
+            <th>Precio</th>
+            <th>Stock</th>
+        </tr>
+    </thead>
+    <tbody>
+        <ng-container *ngFor="let product of products$ | async">
+            <tr>
+                <td >{{product.id}}</td>
+                <td>{{product.name}}</td>
+                <td>{{product.price}}</td>
+                <td>{{product.stock}}</td>
+            </tr>
+        </ng-container>
+    </tbody>
+</table>
