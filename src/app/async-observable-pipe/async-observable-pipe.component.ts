@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ProductsService } from '../products.service';
 import { Observable, filter, map } from 'rxjs';
 import { Product } from '../model/product.model';
@@ -8,11 +8,15 @@ import { Product } from '../model/product.model';
   templateUrl: './async-observable-pipe.component.html',
   styleUrl: './async-observable-pipe.component.scss'
 })
-export class AsyncObservablePipeComponent implements OnInit {
+export class AsyncObservablePipeComponent implements OnInit, OnDestroy {
 
   products$?:Observable<Product[]>;
 
   constructor(private productsService: ProductsService) { 
+  }
+  ngOnDestroy(): void {
+    //No es necesario destruir los observables porque no estan subscriptos
+    // y estan implementados con Pipe Async
   }
 
   ngOnInit(): void {
